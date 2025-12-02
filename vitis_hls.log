@@ -1,0 +1,103 @@
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'pedro' on host 'pedro.note' (Linux_x86_64 version 5.14.0-1042-oem) on Tue Dec 02 08:22:12 -03 2025
+INFO: [HLS 200-10] On os Ubuntu 20.04.4 LTS
+INFO: [HLS 200-10] In directory '/home/pedro/SistemasDigitais'
+Sourcing Tcl script '/home/pedro/SistemasDigitais/trabalho2SD/solucao/csynth.tcl'
+INFO: [HLS 200-1510] Running: source /home/pedro/SistemasDigitais/trabalho2SD/solucao/csynth.tcl
+INFO: [HLS 200-1510] Running: open_project trabalho2SD 
+INFO: [HLS 200-10] Opening project '/home/pedro/SistemasDigitais/trabalho2SD'.
+INFO: [HLS 200-1510] Running: set_top matrix_mult_3x3 
+INFO: [HLS 200-1510] Running: add_files multMatriz.c 
+INFO: [HLS 200-10] Adding design file 'multMatriz.c' to the project
+INFO: [HLS 200-1510] Running: open_solution solucao -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/pedro/SistemasDigitais/trabalho2SD/solucao'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xcau25p-sfvb784-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcau25p-sfvb784-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csynth_design 
+Running Dispatch Server on port: 40765
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 10.04 seconds; current allocated memory: 213.746 MB.
+INFO: [HLS 200-10] Analyzing design file 'multMatriz.c' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.32 seconds. CPU system time: 0.43 seconds. Elapsed time: 0.76 seconds; current allocated memory: 213.746 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-248] Applying array_partition to 'A': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (multMatriz.c:11:0)
+INFO: [HLS 214-248] Applying array_partition to 'B': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (multMatriz.c:11:0)
+INFO: [HLS 214-248] Applying array_partition to 'R': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (multMatriz.c:11:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 5.74 seconds. CPU system time: 0.52 seconds. Elapsed time: 6.31 seconds; current allocated memory: 214.836 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 214.836 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.04 seconds. CPU system time: 0 seconds. Elapsed time: 0.04 seconds; current allocated memory: 215.434 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 215.512 MB.
+INFO: [XFORM 203-510] Pipelining loop 'coluna_loop' (multMatriz.c:29) in function 'matrix_mult_3x3' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'coluna_loop' (multMatriz.c:29) in function 'matrix_mult_3x3' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'produto_loop' (multMatriz.c:29) in function 'matrix_mult_3x3' completely with a factor of 3.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.13 seconds; current allocated memory: 237.266 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'linha_loop' (multMatriz.c:32:26) in function 'matrix_mult_3x3'.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 237.266 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'matrix_mult_3x3' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'matrix_mult_3x3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_1) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_2) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'linha_loop_coluna_loop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 5, loop 'linha_loop_coluna_loop'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.16 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.17 seconds; current allocated memory: 237.266 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.09 seconds; current allocated memory: 237.266 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'matrix_mult_3x3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_2_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_2_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_2_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_2_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_0_0' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_0_1' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_0_2' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_1_0' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_1_1' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_1_2' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_2_0' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_2_1' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/R_2_2' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'matrix_mult_3x3' to 'ap_ctrl_hs'.
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'matrix_mult_3x3' pipeline 'linha_loop_coluna_loop' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_8ns_8ns_16ns_16_4_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_8ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mux_32_8_1_1': 6 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'matrix_mult_3x3'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.16 seconds; current allocated memory: 237.266 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.65 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.69 seconds; current allocated memory: 237.266 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.79 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.82 seconds; current allocated memory: 243.035 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for matrix_mult_3x3.
+INFO: [VLOG 209-307] Generating Verilog RTL for matrix_mult_3x3.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 360.88 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 8.17 seconds. CPU system time: 1.06 seconds. Elapsed time: 9.31 seconds; current allocated memory: 29.406 MB.
+INFO: [HLS 200-112] Total CPU user time: 11.02 seconds. Total CPU system time: 1.35 seconds. Total elapsed time: 22.06 seconds; peak allocated memory: 243.152 MB.

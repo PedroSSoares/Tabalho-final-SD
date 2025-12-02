@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/pedro/SistemasDigitais/VHDL/VHDL.srcs/sources_1/new/PCPO.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'PCPO'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/pedro/SistemasDigitais/VHDL/VHDL.srcs/sim_1/new/test.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_PCPO'
