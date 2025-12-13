@@ -1,0 +1,160 @@
+
+
+================================================================
+== Vitis HLS Report for 'matrix_mult_3x3'
+================================================================
+* Date:           Fri Dec 12 21:09:04 2025
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        trabalho2SD
+* Solution:       solution_array_partition (Vivado IP Flow Target)
+* Product family: kintexuplus
+* Target device:  xcau25p-sfvb784-2-i
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  2.771 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |       29|       29|  0.290 us|  0.290 us|   30|   30|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------------------------+---------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+        |                                                  |                                       |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+        |                     Instance                     |                 Module                |   min   |   max   |    min    |    max    | min | max |   Type  |
+        +--------------------------------------------------+---------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+        |grp_matrix_mult_3x3_Pipeline_coluna_loop_fu_172   |matrix_mult_3x3_Pipeline_coluna_loop   |        8|        8|  80.000 ns|  80.000 ns|    8|    8|       no|
+        |grp_matrix_mult_3x3_Pipeline_coluna_loop1_fu_202  |matrix_mult_3x3_Pipeline_coluna_loop1  |        8|        8|  80.000 ns|  80.000 ns|    8|    8|       no|
+        |grp_matrix_mult_3x3_Pipeline_coluna_loop2_fu_223  |matrix_mult_3x3_Pipeline_coluna_loop2  |        8|        8|  80.000 ns|  80.000 ns|    8|    8|       no|
+        +--------------------------------------------------+---------------------------------------+---------+---------+-----------+-----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       -|       -|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     6|     279|     529|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|     117|    -|
+|Register         |        -|     -|       9|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     6|     288|     646|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      600|  1200|  282000|  141000|    0|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|    ~0|      ~0|      ~0|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------------------------+---------------------------------------+---------+----+----+-----+-----+
+    |                     Instance                     |                 Module                | BRAM_18K| DSP| FF | LUT | URAM|
+    +--------------------------------------------------+---------------------------------------+---------+----+----+-----+-----+
+    |grp_matrix_mult_3x3_Pipeline_coluna_loop_fu_172   |matrix_mult_3x3_Pipeline_coluna_loop   |        0|   2|  93|  169|    0|
+    |grp_matrix_mult_3x3_Pipeline_coluna_loop1_fu_202  |matrix_mult_3x3_Pipeline_coluna_loop1  |        0|   2|  93|  179|    0|
+    |grp_matrix_mult_3x3_Pipeline_coluna_loop2_fu_223  |matrix_mult_3x3_Pipeline_coluna_loop2  |        0|   2|  93|  181|    0|
+    +--------------------------------------------------+---------------------------------------+---------+----+----+-----+-----+
+    |Total                                             |                                       |        0|   6| 279|  529|    0|
+    +--------------------------------------------------+---------------------------------------+---------+----+----+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    +------------+----+-----------+-----+-----------+
+    |    Name    | LUT| Input Size| Bits| Total Bits|
+    +------------+----+-----------+-----+-----------+
+    |R_address0  |  20|          4|    4|         16|
+    |R_ce0       |  20|          4|    1|          4|
+    |R_d0        |  20|          4|   16|         64|
+    |R_we0       |  20|          4|    1|          4|
+    |ap_NS_fsm   |  37|          7|    1|          7|
+    +------------+----+-----------+-----+-----------+
+    |Total       | 117|         23|   23|         95|
+    +------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------------------------------+---+----+-----+-----------+
+    |                              Name                             | FF| LUT| Bits| Const Bits|
+    +---------------------------------------------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                                                      |  6|   0|    6|          0|
+    |grp_matrix_mult_3x3_Pipeline_coluna_loop1_fu_202_ap_start_reg  |  1|   0|    1|          0|
+    |grp_matrix_mult_3x3_Pipeline_coluna_loop2_fu_223_ap_start_reg  |  1|   0|    1|          0|
+    |grp_matrix_mult_3x3_Pipeline_coluna_loop_fu_172_ap_start_reg   |  1|   0|    1|          0|
+    +---------------------------------------------------------------+---+----+-----+-----------+
+    |Total                                                          |  9|   0|    9|          0|
+    +---------------------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------+-----+-----+------------+-----------------+--------------+
+|  RTL Ports | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++------------+-----+-----+------------+-----------------+--------------+
+|ap_clk      |   in|    1|  ap_ctrl_hs|  matrix_mult_3x3|  return value|
+|ap_rst      |   in|    1|  ap_ctrl_hs|  matrix_mult_3x3|  return value|
+|ap_start    |   in|    1|  ap_ctrl_hs|  matrix_mult_3x3|  return value|
+|ap_done     |  out|    1|  ap_ctrl_hs|  matrix_mult_3x3|  return value|
+|ap_idle     |  out|    1|  ap_ctrl_hs|  matrix_mult_3x3|  return value|
+|ap_ready    |  out|    1|  ap_ctrl_hs|  matrix_mult_3x3|  return value|
+|A_0_0       |   in|    8|     ap_none|            A_0_0|       pointer|
+|A_0_1       |   in|    8|     ap_none|            A_0_1|       pointer|
+|A_0_2       |   in|    8|     ap_none|            A_0_2|       pointer|
+|A_1_0       |   in|    8|     ap_none|            A_1_0|       pointer|
+|A_1_1       |   in|    8|     ap_none|            A_1_1|       pointer|
+|A_1_2       |   in|    8|     ap_none|            A_1_2|       pointer|
+|A_2_0       |   in|    8|     ap_none|            A_2_0|       pointer|
+|A_2_1       |   in|    8|     ap_none|            A_2_1|       pointer|
+|A_2_2       |   in|    8|     ap_none|            A_2_2|       pointer|
+|B_0_0       |   in|    8|     ap_none|            B_0_0|       pointer|
+|B_0_1       |   in|    8|     ap_none|            B_0_1|       pointer|
+|B_0_2       |   in|    8|     ap_none|            B_0_2|       pointer|
+|B_1_0       |   in|    8|     ap_none|            B_1_0|       pointer|
+|B_1_1       |   in|    8|     ap_none|            B_1_1|       pointer|
+|B_1_2       |   in|    8|     ap_none|            B_1_2|       pointer|
+|B_2_0       |   in|    8|     ap_none|            B_2_0|       pointer|
+|B_2_1       |   in|    8|     ap_none|            B_2_1|       pointer|
+|B_2_2       |   in|    8|     ap_none|            B_2_2|       pointer|
+|R_address0  |  out|    4|   ap_memory|                R|         array|
+|R_ce0       |  out|    1|   ap_memory|                R|         array|
+|R_we0       |  out|    1|   ap_memory|                R|         array|
+|R_d0        |  out|   16|   ap_memory|                R|         array|
++------------+-----+-----+------------+-----------------+--------------+
+

@@ -9,7 +9,7 @@ add_files multMatriz.c
 open_solution "solucao" -flow_target vivado
 set_part {xcau25p-sfvb784-2-i}
 create_clock -period 10 -name default
-#source "./trabalho2SD/solucao/directives.tcl"
+source "./trabalho2SD/solucao/directives.tcl"
 #csim_design
 csynth_design
 #cosim_design

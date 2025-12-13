@@ -5,6 +5,16 @@
                 <option name="name" value="matrix_mult_3x3"/>
             </pragma>
         </directive>
+        <directive functionName="matrix_mult_3x3" label="" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="off" value="" positionalBoolean="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="matrix_mult_3x3" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="matrix_mult_3x3"/>
+            </pragma>
+        </directive>
     </sourceFile>
 </AutoPilot:ProjectResources>
 
