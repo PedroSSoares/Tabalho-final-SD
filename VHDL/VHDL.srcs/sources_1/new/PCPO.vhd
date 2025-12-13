@@ -30,7 +30,7 @@ architecture Behavioral of PCPO is
     --sinais PO 
     signal i, j, k : integer range 0 to 3;
     signal acc : unsigned(15 downto 0) := (others => '0');
-    signal matriz_R_interna : mat3x3_16bit; -- Memória interna para guardar o resultado
+    signal temp_R : mat3x3_16bit; -- Memória interna para guardar o resultado
 
     --PC -> PO
     signal clr_all : std_logic; -- Resetar tudo
@@ -169,7 +169,7 @@ begin
             end if;
 
             if wr_en = '1' then
-                matriz_R_interna(i, j) <= acc;
+                temp_R(i, j) <= acc;
             end if;
         
         end if;
@@ -179,6 +179,6 @@ begin
     j_eq_2 <= '1' when j = 2 else '0';
     i_eq_2 <= '1' when i = 2 else '0';
 
-    R <= matriz_R_interna;
+    R <= temp_R;
 
 end Behavioral;
