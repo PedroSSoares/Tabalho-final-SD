@@ -1,0 +1,74 @@
+\frametitle{VHDL PC}
+
+    \begin{lstlisting}
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            estado_atual <= s0;
+        elsif rising_edge(clk) then
+            case estado_atual is
+                when s0 =>
+                    if start = '1' then
+                        estado_atual <= s1;
+                    end if;
+
+                when s1 =>
+                    if k_eq_2 = '1' then
+                        estado_atual <= s2;
+                    else
+                        estado_atual <= s1;
+                    end if;
+
+                when s2 =>
+                    if j_eq_2 = '0' then
+                        estado_atual <= s1;
+                    else
+                        if i_eq_2 = '0' then
+                            estado_atual <= s1;
+                        else
+                            estado_atual <= s3;
+                        end if;
+                    end if;
+
+                when s3 =>
+                    if start = '0' then
+                        estado_atual <= s0;
+                    end if;
+            end case;
+        end if;
+    end process;
+
+    --COMBINACIONAL PC
+    process(estado_atual, k_eq_2, j_eq_2, i_eq_2, start)
+    begin
+        clr_all <= '0'; en_calc <= '0'; inc_k <= '0'; clr_k <= '0';
+        inc_j <= '0'; clr_j <= '0'; inc_i <= '0';
+        wr_en <= '0'; clr_acc <= '0'; done <= '0';
+
+        case estado_atual is
+            when s0 =>
+                if start = '1' then clr_all <= '1'; end if;
+
+            when s1 =>
+                en_calc <= '1';
+                if k_eq_2 = '0' then inc_k <= '1'; end if;
+
+            when s2 =>
+                wr_en   <= '1';
+                clr_acc <= '1';
+                clr_k   <= '1';
+
+                if j_eq_2 = '0' then
+                    inc_j <= '1';
+                else
+                    clr_j <= '1';
+                    if i_eq_2 = '0' then
+                        inc_i <= '1';
+                    end if;
+                end if;
+
+            when s3 =>
+                done <= '1';
+        end case;
+    end process;
+    \end{lstlisting}

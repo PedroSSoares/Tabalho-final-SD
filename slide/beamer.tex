@@ -1,0 +1,274 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[section]{placeins}
+\usepackage{booktabs}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=C,
+    basicstyle=\tiny\ttfamily, % Fonte pequena para caber no slide
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true,
+    numberstyle=\tiny,
+    frame=single % Adiciona uma borda
+}
+
+% Choose the Inf theme
+\usetheme{Inf}
+
+% Define the title with \title[short title]{long title}
+% Short title is optional
+\title[Trabalho 2]
+      {Sistemas Digitais}
+
+\date{Dezembro de 2025}
+
+% Author information
+\author{Enzo Lisbôa Peixoto e Pedro Scholz Soares}
+\institute{Instituto de Informática --- UFRGS\\\texttt{elpeixoto@inf.ufrgs.brr\\pedro.soares@inf.ufrgs.br\\}}
+
+\begin{document}
+
+% Command to create title page
+\InfTitlePage
+
+% 1D Heat equation
+
+
+\section{Definição
+}
+
+\frame{
+    \frametitle{Descrição}
+
+    \begin{itemize}
+        \item Implementar um algoritmo de multiplicação de duas matrizes 3x3. 
+		\item HLS e duas opções de otimização
+        \item Fazer o projeto PC-PO
+        \item Comparar as 3 implementações em dados de área e desempenho
+    \end{itemize}
+}
+
+
+
+\section{Algoritmo}
+
+\begin{frame}[fragile]
+    \frametitle{Código em C}
+
+    \begin{lstlisting}
+#include <stdint.h>
+
+#define N 3
+
+void matrix_mult_3x3(uint8_t A[N][N], 
+                     uint8_t B[N][N], 
+                     uint16_t R[N][N]) {
+
+    uint16_t soma;
+
+    linha_loop: for (int i = 0; i < N; i++) {
+        // Loop das colunas de B
+        coluna_loop: for (int j = 0; j < N; j++) {
+            soma = 0;
+            
+            produto_loop: for (int k = 0; k < N; k++) {
+                soma += A[i][k] * B[k][j];
+            }
+            
+            R[i][j] = soma;
+        }
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\frame{
+    \frametitle{Versões HLS}
+
+    \begin{itemize}
+        \item Referência - sequencial
+        \item Pipeline - foco em vazão
+        \item Paralelismo Total - foco em Latência
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{Referência}
+	    \begin{itemize}
+        \item Adição de pipeline
+        \item O Initiation Interval foi deixado em automático
+        \item Objetivo: Melhorar a vazão, respeitando os limites da memória
+		
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{Paralelismo Total}
+	    \begin{itemize}
+        \item ARRAYPARTITION nas variáveis e UNROLL nos loops
+        \item Converte a memória RAM em registradores distribuídos (FF), permitindo acesso simultâneo. O hardware de multiplicação é duplicado para realizar o cálculo de uma só vez
+        \item Objetivo: Obter a latência mínima possível, aceitando o aumento consideravel na área do chip
+    \end{itemize}
+}
+\section{Projeto}
+\frame{
+    \frametitle{PCPO}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.9\textwidth]{../docs/Fluxograma_ASM_PCPO.pdf}
+        \caption{Fluxograma ASM PCPO}
+    \end{figure}
+}
+
+\frame{
+    \frametitle{PCPO}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.7\textwidth]{../docs/FSM_Lucidchart.pdf}
+        \caption{FSM}
+    \end{figure}
+}
+
+\frame{
+    \frametitle{PO}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.9\textwidth]{../docs/Esquematico_PO.pdf}
+        \caption{Parte Operativa}
+    \end{figure}
+}
+
+\section{Implementação em VHDL}
+
+\begin{frame}[fragile]
+    \frametitle{VHDL PO}
+
+    \begin{lstlisting}
+process(clk)
+    begin
+        if rising_edge(clk) then
+            if clr_all = '1' then
+                i <= 0; j <= 0; k <= 0; acc <= (others => '0');
+            else
+                if inc_k = '1' then k <= k + 1; end if;
+                if clr_k = '1' then k <= 0;     end if;
+                
+                if inc_j = '1' then j <= j + 1; end if;
+                if clr_j = '1' then j <= 0;     end if;
+                
+                if inc_i = '1' then i <= i + 1; end if;
+            end if;
+
+            if clr_acc = '1' then
+                acc <= (others => '0');
+            elsif en_calc = '1' then
+                acc <= acc + (matrizA(i, k) * matrizB(k, j));
+            end if;
+
+            if wr_en = '1' then
+                matriz_R_interna(i, j) <= acc;
+            end if;
+        end if;
+    end process;
+    k_eq_2 <= '1' when k = 2 else '0';
+    j_eq_2 <= '1' when j = 2 else '0';
+    i_eq_2 <= '1' when i = 2 else '0';
+    resul <= matriz_R_interna;
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]
+    \frametitle{VHDL PC}
+
+    \begin{lstlisting}
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            estado_atual <= s0;
+        elsif rising_edge(clk) then
+            case estado_atual is
+                when s0 =>
+                    if start = '1' then
+                        estado_atual <= s1;
+                    end if;
+
+                when s1 =>
+                    if k_eq_2 = '1' then
+                        estado_atual <= s2;
+                    else
+                        estado_atual <= s1;
+                    end if;
+
+                when s2 =>
+                    if j_eq_2 = '0' then
+                        estado_atual <= s1; 
+                    else
+                        if i_eq_2 = '0' then
+                            estado_atual <= s1; 
+                        else
+                            estado_atual <= s3; 
+                        end if;
+                    end if;
+
+                when s3 =>
+                    if start = '0' then
+                        estado_atual <= s0;
+                    end if;
+            end case;
+        end if;
+    end process;
+
+    --COMBINACIONAL PC 
+    process(estado_atual, k_eq_2, j_eq_2, i_eq_2, start)
+    begin
+        clr_all <= '0'; en_calc <= '0'; inc_k <= '0'; clr_k <= '0';
+        inc_j <= '0'; clr_j <= '0'; inc_i <= '0'; 
+        wr_en <= '0'; clr_acc <= '0'; done <= '0';
+
+        case estado_atual is
+            when s0 =>
+                if start = '1' then clr_all <= '1'; end if;
+
+            when s1 =>
+                en_calc <= '1'; 
+                if k_eq_2 = '0' then inc_k <= '1'; end if; 
+
+            when s2 =>
+                wr_en   <= '1'; 
+                clr_acc <= '1'; 
+                clr_k   <= '1';
+                
+                if j_eq_2 = '0' then
+                    inc_j <= '1'; 
+                else
+                    clr_j <= '1'; 
+                    if i_eq_2 = '0' then
+                        inc_i <= '1';
+                    end if;
+                end if;
+
+            when s3 =>
+                done <= '1';
+        end case;
+    end process;
+    \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Obrigado!}
+    \InfContacts
+\end{frame}
+
+\end{document}
