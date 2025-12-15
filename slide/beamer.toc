@@ -1,5 +1,11 @@
 \babel@toc {brazil}{}
 \beamer@sectionintoc {1}{Definição }{2}{0}{1}
 \beamer@sectionintoc {2}{Algoritmo}{3}{0}{2}
-\beamer@sectionintoc {3}{Projeto}{7}{0}{3}
-\beamer@sectionintoc {4}{Implementação em VHDL}{10}{0}{4}
+\beamer@sectionintoc {3}{Otimizações}{4}{0}{3}
+\beamer@sectionintoc {4}{Projeto}{6}{0}{4}
+\beamer@sectionintoc {5}{Implementação em VHDL}{9}{0}{5}
+\beamer@sectionintoc {6}{Testes}{13}{0}{6}
+\beamer@sectionintoc {7}{Simulações}{18}{0}{7}
+\beamer@sectionintoc {8}{HLS}{21}{0}{8}
+\beamer@sectionintoc {9}{Comparação}{22}{0}{9}
+\beamer@sectionintoc {10}{Conclusões}{23}{0}{10}
