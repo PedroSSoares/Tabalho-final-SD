@@ -1,7 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use work.matrix_types.all;
 
 package matrix_types is
     -- Matriz 3x3 de 8 bits (Entradas)
@@ -10,15 +9,20 @@ package matrix_types is
     type mat3x3_16bit is array (0 to 2, 0 to 2) of unsigned(15 downto 0);
 end package;
 
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use work.matrix_types.all;
+
 entity PCPO is
     Port ( 
-           clk      : in STD_LOGIC;
-           rst      : in STD_LOGIC;
-           start    : in STD_LOGIC;
-           done     : out STD_LOGIC;
-           A        : in mat3x3_8bit;
-           B        : in mat3x3_8bit;
-           R        : out mat3x3_16bit           
+           clk     : in STD_LOGIC;
+           rst     : in STD_LOGIC;
+           start   : in STD_LOGIC;
+           matrizA : in mat3x3_8bit;
+           matrizB : in mat3x3_8bit;
+           resul   : out mat3x3_16bit;
+           done    : out STD_LOGIC
          );
 end PCPO;
 
@@ -26,11 +30,12 @@ architecture Behavioral of PCPO is
 
     type estado_t is (s0, s1, s2, s3);
     signal estado_atual : estado_t;
+
     
     --sinais PO 
     signal i, j, k : integer range 0 to 3;
     signal acc : unsigned(15 downto 0) := (others => '0');
-    signal temp_R : mat3x3_16bit; -- Memória interna para guardar o resultado
+    signal matriz_R_interna : mat3x3_16bit; -- Memória interna para guardar o resultado
 
     --PC -> PO
     signal clr_all : std_logic; -- Resetar tudo
@@ -53,7 +58,6 @@ begin
     --PARTE DE CONTROLE (PC)
     process(clk, rst)
     begin
-        
         if rst = '1' then
             estado_atual <= s0;
         elsif rising_edge(clk) then
@@ -90,25 +94,20 @@ begin
         end if;
     end process;
 
-    -- PARTE COMBINACIONAL
+    --COMBINACIONAL PC 
     process(estado_atual, k_eq_2, j_eq_2, i_eq_2, start)
     begin
-        
         clr_all <= '0'; en_calc <= '0'; inc_k <= '0'; clr_k <= '0';
         inc_j <= '0'; clr_j <= '0'; inc_i <= '0'; 
         wr_en <= '0'; clr_acc <= '0'; done <= '0';
 
         case estado_atual is
             when s0 =>
-                if start = '1' then 
-                    clr_all <= '1'; 
-                end if;
+                if start = '1' then clr_all <= '1'; end if;
 
             when s1 =>
                 en_calc <= '1'; 
-                if k_eq_2 = '0' then 
-                    inc_k <= '1'; 
-                end if; 
+                if k_eq_2 = '0' then inc_k <= '1'; end if; 
 
             when s2 =>
                 wr_en   <= '1'; 
@@ -126,52 +125,36 @@ begin
 
             when s3 =>
                 done <= '1';
-        
         end case;
     end process;
 
-    -- PARTE OPERATIVA (PO)
+
+    -- PARTE OPERATIVA (PO) - Datapath
+    
     process(clk)
     begin
         if rising_edge(clk) then
             if clr_all = '1' then
-                i <= 0; 
-                j <= 0; 
-                k <= 0; 
-                acc <= (others => '0');
+                i <= 0; j <= 0; k <= 0; acc <= (others => '0');
             else
-                if inc_k = '1' then 
-                    k <= k + 1; 
-                end if;
+                if inc_k = '1' then k <= k + 1; end if;
+                if clr_k = '1' then k <= 0;     end if;
                 
-                if clr_k = '1' then 
-                    k <= 0;     
-                end if;
+                if inc_j = '1' then j <= j + 1; end if;
+                if clr_j = '1' then j <= 0;     end if;
                 
-                if inc_j = '1' then 
-                    j <= j + 1; 
-                end if;
-                
-                if clr_j = '1' then 
-                    j <= 0;     
-                end if;
-                
-                if inc_i = '1' then 
-                    i <= i + 1; 
-                end if;
-            
+                if inc_i = '1' then i <= i + 1; end if;
             end if;
 
             if clr_acc = '1' then
                 acc <= (others => '0');
             elsif en_calc = '1' then
-                acc <= acc + (A(i, k) * B(k, j));
+                acc <= acc + (matrizA(i, k) * matrizB(k, j));
             end if;
 
             if wr_en = '1' then
-                temp_R(i, j) <= acc;
+                matriz_R_interna(i, j) <= acc;
             end if;
-        
         end if;
     end process;
 
@@ -179,6 +162,6 @@ begin
     j_eq_2 <= '1' when j = 2 else '0';
     i_eq_2 <= '1' when i = 2 else '0';
 
-    R <= temp_R;
+    resul <= matriz_R_interna;
 
 end Behavioral;
