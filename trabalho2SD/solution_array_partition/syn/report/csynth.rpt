@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'matrix_mult_3x3'
 ================================================================
 + General Information: 
-    * Date:           Fri Dec 12 21:09:04 2025
+    * Date:           Mon Dec 15 16:25:13 2025
     * Version:        2022.2 (Build 3670227 on Oct 13 2022)
     * Project:        trabalho2SD
     * Solution:       solution_array_partition (Vivado IP Flow Target)
@@ -15,18 +15,12 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
-    |                  Modules                 | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |         |           |           |     |
-    |                  & Loops                 | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP   |     FF    |    LUT    | URAM|
-    +------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
-    |+ matrix_mult_3x3                         |     -|  4.53|       29|  290.000|         -|       30|     -|        no|     -|  6 (~0%)|  288 (~0%)|  646 (~0%)|    -|
-    | + matrix_mult_3x3_Pipeline_coluna_loop   |     -|  4.53|        8|   80.000|         -|        8|     -|        no|     -|  2 (~0%)|   93 (~0%)|  169 (~0%)|    -|
-    |  o coluna_loop                           |     -|  7.30|        6|   60.000|         5|        1|     3|       yes|     -|        -|          -|          -|    -|
-    | + matrix_mult_3x3_Pipeline_coluna_loop1  |     -|  4.53|        8|   80.000|         -|        8|     -|        no|     -|  2 (~0%)|   93 (~0%)|  179 (~0%)|    -|
-    |  o coluna_loop                           |     -|  7.30|        6|   60.000|         5|        1|     3|       yes|     -|        -|          -|          -|    -|
-    | + matrix_mult_3x3_Pipeline_coluna_loop2  |     -|  4.53|        8|   80.000|         -|        8|     -|        no|     -|  2 (~0%)|   93 (~0%)|  181 (~0%)|    -|
-    |  o coluna_loop                           |     -|  7.30|        6|   60.000|         5|        1|     3|       yes|     -|        -|          -|          -|    -|
-    +------------------------------------------+------+------+---------+---------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    +-------------------+------+------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    |      Modules      | Issue|      | Latency | Latency| Iteration|         | Trip |          |      |         |           |           |     |
+    |      & Loops      | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM |   DSP   |     FF    |    LUT    | URAM|
+    +-------------------+------+------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
+    |+ matrix_mult_3x3  |     -|  5.00|        8|  80.000|         -|        9|     -|        no|     -|  18 (1%)|  121 (~0%)|  528 (~0%)|    -|
+    +-------------------+------+------+---------+--------+----------+---------+------+----------+------+---------+-----------+-----------+-----+
 
 
 ================================================================
@@ -37,7 +31,9 @@
 | Interface  | Bitwidth |
 +------------+----------+
 | R_address0 | 4        |
+| R_address1 | 4        |
 | R_d0       | 16       |
+| R_d1       | 16       |
 +------------+----------+
 
 * Other Ports
@@ -112,40 +108,66 @@
 | R        | R_ce0        | port    |          |
 | R        | R_we0        | port    |          |
 | R        | R_d0         | port    |          |
+| R        | R_address1   | port    | offset   |
+| R        | R_ce1        | port    |          |
+| R        | R_we1        | port    |          |
+| R        | R_d1         | port    |          |
 +----------+--------------+---------+----------+
 
 
 ================================================================
 == Bind Op Report
 ================================================================
-+------------------------------------------+-----+--------+------------+-----+--------+---------+
-| Name                                     | DSP | Pragma | Variable   | Op  | Impl   | Latency |
-+------------------------------------------+-----+--------+------------+-----+--------+---------+
-| + matrix_mult_3x3                        | 6   |        |            |     |        |         |
-|  + matrix_mult_3x3_Pipeline_coluna_loop  | 2   |        |            |     |        |         |
-|    add_ln34_fu_177_p2                    | -   |        | add_ln34   | add | fabric | 0       |
-|    mul_8ns_8ns_16_1_1_U4                 | -   |        | mul_ln40   | mul | auto   | 0       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U6     | 1   |        | mul_ln40_1 | mul | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U5     | 1   |        | mul_ln40_2 | mul | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U5     | 1   |        | add_ln40   | add | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U6     | 1   |        | add_ln40_1 | add | dsp48  | 3       |
-|  + matrix_mult_3x3_Pipeline_coluna_loop1 | 2   |        |            |     |        |         |
-|    add_ln34_fu_179_p2                    | -   |        | add_ln34   | add | fabric | 0       |
-|    add_ln43_fu_238_p2                    | -   |        | add_ln43   | add | fabric | 0       |
-|    mul_8ns_8ns_16_1_1_U26                | -   |        | mul_ln40   | mul | auto   | 0       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U28    | 1   |        | mul_ln40_3 | mul | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U27    | 1   |        | mul_ln40_4 | mul | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U27    | 1   |        | add_ln40   | add | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U28    | 1   |        | add_ln40_2 | add | dsp48  | 3       |
-|  + matrix_mult_3x3_Pipeline_coluna_loop2 | 2   |        |            |     |        |         |
-|    add_ln34_fu_179_p2                    | -   |        | add_ln34   | add | fabric | 0       |
-|    add_ln43_fu_238_p2                    | -   |        | add_ln43   | add | fabric | 0       |
-|    mul_8ns_8ns_16_1_1_U45                | -   |        | mul_ln40   | mul | auto   | 0       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U47    | 1   |        | mul_ln40_1 | mul | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U46    | 1   |        | mul_ln40_2 | mul | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U46    | 1   |        | add_ln40   | add | dsp48  | 3       |
-|    mac_muladd_8ns_8ns_16ns_16_4_1_U47    | 1   |        | add_ln40_1 | add | dsp48  | 3       |
-+------------------------------------------+-----+--------+------------+-----+--------+---------+
++--------------------------------------+-----+--------+-------------+-----+-------+---------+
+| Name                                 | DSP | Pragma | Variable    | Op  | Impl  | Latency |
++--------------------------------------+-----+--------+-------------+-----+-------+---------+
+| + matrix_mult_3x3                    | 18  |        |             |     |       |         |
+|   mul_8ns_8ns_16_1_1_U1              | -   |        | soma        | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U19 | 1   |        | mul_ln40    | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U10 | 1   |        | mul_ln40_1  | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U10 | 1   |        | add_ln40    | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U19 | 1   |        | soma_1      | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U2              | -   |        | soma_2      | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U20 | 1   |        | mul_ln40_3  | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U11 | 1   |        | mul_ln40_4  | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U11 | 1   |        | add_ln40_2  | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U20 | 1   |        | soma_3      | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U3              | -   |        | soma_4      | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U21 | 1   |        | mul_ln40_6  | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U12 | 1   |        | mul_ln40_7  | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U12 | 1   |        | add_ln40_4  | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U21 | 1   |        | soma_5      | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U4              | -   |        | soma_6      | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U22 | 1   |        | mul_ln40_9  | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U13 | 1   |        | mul_ln40_10 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U13 | 1   |        | add_ln40_6  | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U22 | 1   |        | soma_7      | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U5              | -   |        | soma_8      | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U23 | 1   |        | mul_ln40_12 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U14 | 1   |        | mul_ln40_13 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U14 | 1   |        | add_ln40_8  | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U23 | 1   |        | soma_9      | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U6              | -   |        | soma_10     | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U24 | 1   |        | mul_ln40_15 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U15 | 1   |        | mul_ln40_16 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U15 | 1   |        | add_ln40_10 | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U24 | 1   |        | soma_11     | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U7              | -   |        | soma_12     | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U25 | 1   |        | mul_ln40_18 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U16 | 1   |        | mul_ln40_19 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U16 | 1   |        | add_ln40_12 | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U25 | 1   |        | soma_13     | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U8              | -   |        | soma_14     | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U26 | 1   |        | mul_ln40_21 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U17 | 1   |        | mul_ln40_22 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U17 | 1   |        | add_ln40_14 | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U26 | 1   |        | soma_15     | add | dsp48 | 3       |
+|   mul_8ns_8ns_16_1_1_U9              | -   |        | soma_16     | mul | auto  | 0       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U27 | 1   |        | mul_ln40_24 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U18 | 1   |        | mul_ln40_25 | mul | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U18 | 1   |        | add_ln40_16 | add | dsp48 | 3       |
+|   mac_muladd_8ns_8ns_16ns_16_4_1_U27 | 1   |        | soma_17     | add | dsp48 | 3       |
++--------------------------------------+-----+--------+-------------+-----+-------+---------+
 
 
 ================================================================
@@ -162,7 +184,7 @@
 +-----------------+---------------------------+-----------------------------------------------------------------------------+
 | array_partition | complete dim=0 variable=A | trabalho2SD/solution_array_partition/directives.tcl:7 in matrix_mult_3x3, A |
 | array_partition | complete dim=0 variable=B | trabalho2SD/solution_array_partition/directives.tcl:9 in matrix_mult_3x3, B |
-| unroll          |                           | trabalho2SD/solution_array_partition/directives.tcl:8 in matrix_mult_3x3    |
+| unroll          |                           | trabalho2SD/solution_array_partition/directives.tcl:11 in matrix_mult_3x3   |
 +-----------------+---------------------------+-----------------------------------------------------------------------------+
 
 

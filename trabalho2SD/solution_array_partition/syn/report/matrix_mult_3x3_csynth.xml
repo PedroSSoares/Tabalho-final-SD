@@ -18,26 +18,26 @@
 <PipelineType>no</PipelineType>
 <SummaryOfTimingAnalysis>
 <unit>ns</unit>
-<EstimatedClockPeriod>2.771</EstimatedClockPeriod>
+<EstimatedClockPeriod>2.295</EstimatedClockPeriod>
 </SummaryOfTimingAnalysis>
 <SummaryOfOverallLatency>
 <unit>clock cycles</unit>
-<Best-caseLatency>29</Best-caseLatency>
-<Average-caseLatency>29</Average-caseLatency>
-<Worst-caseLatency>29</Worst-caseLatency>
-<Best-caseRealTimeLatency>0.290 us</Best-caseRealTimeLatency>
-<Average-caseRealTimeLatency>0.290 us</Average-caseRealTimeLatency>
-<Worst-caseRealTimeLatency>0.290 us</Worst-caseRealTimeLatency>
-<Interval-min>30</Interval-min>
-<Interval-max>30</Interval-max>
+<Best-caseLatency>8</Best-caseLatency>
+<Average-caseLatency>8</Average-caseLatency>
+<Worst-caseLatency>8</Worst-caseLatency>
+<Best-caseRealTimeLatency>80.000 ns</Best-caseRealTimeLatency>
+<Average-caseRealTimeLatency>80.000 ns</Average-caseRealTimeLatency>
+<Worst-caseRealTimeLatency>80.000 ns</Worst-caseRealTimeLatency>
+<Interval-min>9</Interval-min>
+<Interval-max>9</Interval-max>
 </SummaryOfOverallLatency>
 </PerformanceEstimates>
 
 <AreaEstimates>
 <Resources>
-<DSP>6</DSP>
-<FF>288</FF>
-<LUT>646</LUT>
+<DSP>18</DSP>
+<FF>121</FF>
+<LUT>528</LUT>
 <BRAM_18K>0</BRAM_18K>
 <URAM>0</URAM>
 </Resources>
@@ -371,6 +371,54 @@
 </RtlPorts>
 <RtlPorts>
 <name>R_d0</name>
+<Object>R</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>16</Bits>
+<Attribute>data</Attribute>
+<CType>int</CType>
+</RtlPorts>
+<RtlPorts>
+<name>R_address1</name>
+<Object>R</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>4</Bits>
+<Attribute>address</Attribute>
+<CType>int</CType>
+</RtlPorts>
+<RtlPorts>
+<name>R_ce1</name>
+<Object>R</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+<CType>int</CType>
+</RtlPorts>
+<RtlPorts>
+<name>R_we1</name>
+<Object>R</Object>
+<Type>array</Type>
+<Scope></Scope>
+<IOProtocol>ap_memory</IOProtocol>
+<IOConfig></IOConfig>
+<Dir>out</Dir>
+<Bits>1</Bits>
+<Attribute>control</Attribute>
+<CType>int</CType>
+</RtlPorts>
+<RtlPorts>
+<name>R_d1</name>
 <Object>R</Object>
 <Type>array</Type>
 <Scope></Scope>

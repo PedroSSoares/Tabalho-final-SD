@@ -6,4 +6,6 @@
 set_directive_top -name matrix_mult_3x3 "matrix_mult_3x3"
 set_directive_array_partition -type complete -dim 0 "matrix_mult_3x3" A
 set_directive_unroll "matrix_mult_3x3/linha_loop"
-set_directive_array_partition -dim 0 -type complete "matrix_mult_3x3" B
+set_directive_array_partition -type complete -dim 0 "matrix_mult_3x3" B
+set_directive_unroll "matrix_mult_3x3/coluna_loop"
+set_directive_unroll "matrix_mult_3x3/produto_loop"

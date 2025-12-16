@@ -15,25 +15,25 @@
         <PipelineType>no</PipelineType>
         <SummaryOfTimingAnalysis>
             <unit>ns</unit>
-            <EstimatedClockPeriod>2.771</EstimatedClockPeriod>
+            <EstimatedClockPeriod>2.295</EstimatedClockPeriod>
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
-            <Best-caseLatency>29</Best-caseLatency>
-            <Average-caseLatency>29</Average-caseLatency>
-            <Worst-caseLatency>29</Worst-caseLatency>
-            <Best-caseRealTimeLatency>0.290 us</Best-caseRealTimeLatency>
-            <Average-caseRealTimeLatency>0.290 us</Average-caseRealTimeLatency>
-            <Worst-caseRealTimeLatency>0.290 us</Worst-caseRealTimeLatency>
-            <Interval-min>30</Interval-min>
-            <Interval-max>30</Interval-max>
+            <Best-caseLatency>8</Best-caseLatency>
+            <Average-caseLatency>8</Average-caseLatency>
+            <Worst-caseLatency>8</Worst-caseLatency>
+            <Best-caseRealTimeLatency>80.000 ns</Best-caseRealTimeLatency>
+            <Average-caseRealTimeLatency>80.000 ns</Average-caseRealTimeLatency>
+            <Worst-caseRealTimeLatency>80.000 ns</Worst-caseRealTimeLatency>
+            <Interval-min>9</Interval-min>
+            <Interval-max>9</Interval-max>
         </SummaryOfOverallLatency>
     </PerformanceEstimates>
     <AreaEstimates>
         <Resources>
-            <DSP>6</DSP>
-            <FF>288</FF>
-            <LUT>646</LUT>
+            <DSP>18</DSP>
+            <FF>121</FF>
+            <LUT>528</LUT>
             <BRAM_18K>0</BRAM_18K>
             <URAM>0</URAM>
         </Resources>
@@ -376,255 +376,90 @@
             <Attribute>data</Attribute>
             <CType>int</CType>
         </RtlPorts>
+        <RtlPorts>
+            <name>R_address1</name>
+            <Object>R</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>4</Bits>
+            <Attribute>address</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>R_ce1</name>
+            <Object>R</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>R_we1</name>
+            <Object>R</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>1</Bits>
+            <Attribute>control</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
+        <RtlPorts>
+            <name>R_d1</name>
+            <Object>R</Object>
+            <Type>array</Type>
+            <Scope/>
+            <IOProtocol>ap_memory</IOProtocol>
+            <IOConfig/>
+            <Dir>out</Dir>
+            <Bits>16</Bits>
+            <Attribute>data</Attribute>
+            <CType>int</CType>
+        </RtlPorts>
     </InterfaceSummary>
     <RTLDesignHierarchy>
-        <TopModule MAX_DEPTH="3">
+        <TopModule MAX_DEPTH="2">
             <ModuleName>matrix_mult_3x3</ModuleName>
-            <InstancesList>
-                <Instance>
-                    <InstName>grp_matrix_mult_3x3_Pipeline_coluna_loop_fu_172</InstName>
-                    <ModuleName>matrix_mult_3x3_Pipeline_coluna_loop</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>172</ID>
-                    <BindInstances>add_ln34_fu_177_p2 mul_8ns_8ns_16_1_1_U4 mac_muladd_8ns_8ns_16ns_16_4_1_U6 mac_muladd_8ns_8ns_16ns_16_4_1_U5 mac_muladd_8ns_8ns_16ns_16_4_1_U5 mac_muladd_8ns_8ns_16ns_16_4_1_U6</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_matrix_mult_3x3_Pipeline_coluna_loop1_fu_202</InstName>
-                    <ModuleName>matrix_mult_3x3_Pipeline_coluna_loop1</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>202</ID>
-                    <BindInstances>add_ln34_fu_179_p2 add_ln43_fu_238_p2 mul_8ns_8ns_16_1_1_U26 mac_muladd_8ns_8ns_16ns_16_4_1_U28 mac_muladd_8ns_8ns_16ns_16_4_1_U27 mac_muladd_8ns_8ns_16ns_16_4_1_U27 mac_muladd_8ns_8ns_16ns_16_4_1_U28</BindInstances>
-                </Instance>
-                <Instance>
-                    <InstName>grp_matrix_mult_3x3_Pipeline_coluna_loop2_fu_223</InstName>
-                    <ModuleName>matrix_mult_3x3_Pipeline_coluna_loop2</ModuleName>
-                    <IsCompInst>true</IsCompInst>
-                    <ID>223</ID>
-                    <BindInstances>add_ln34_fu_179_p2 add_ln43_fu_238_p2 mul_8ns_8ns_16_1_1_U45 mac_muladd_8ns_8ns_16ns_16_4_1_U47 mac_muladd_8ns_8ns_16ns_16_4_1_U46 mac_muladd_8ns_8ns_16ns_16_4_1_U46 mac_muladd_8ns_8ns_16ns_16_4_1_U47</BindInstances>
-                </Instance>
-            </InstancesList>
+            <BindInstances>mul_8ns_8ns_16_1_1_U1 mac_muladd_8ns_8ns_16ns_16_4_1_U19 mac_muladd_8ns_8ns_16ns_16_4_1_U10 mac_muladd_8ns_8ns_16ns_16_4_1_U10 mac_muladd_8ns_8ns_16ns_16_4_1_U19 mul_8ns_8ns_16_1_1_U2 mac_muladd_8ns_8ns_16ns_16_4_1_U20 mac_muladd_8ns_8ns_16ns_16_4_1_U11 mac_muladd_8ns_8ns_16ns_16_4_1_U11 mac_muladd_8ns_8ns_16ns_16_4_1_U20 mul_8ns_8ns_16_1_1_U3 mac_muladd_8ns_8ns_16ns_16_4_1_U21 mac_muladd_8ns_8ns_16ns_16_4_1_U12 mac_muladd_8ns_8ns_16ns_16_4_1_U12 mac_muladd_8ns_8ns_16ns_16_4_1_U21 mul_8ns_8ns_16_1_1_U4 mac_muladd_8ns_8ns_16ns_16_4_1_U22 mac_muladd_8ns_8ns_16ns_16_4_1_U13 mac_muladd_8ns_8ns_16ns_16_4_1_U13 mac_muladd_8ns_8ns_16ns_16_4_1_U22 mul_8ns_8ns_16_1_1_U5 mac_muladd_8ns_8ns_16ns_16_4_1_U23 mac_muladd_8ns_8ns_16ns_16_4_1_U14 mac_muladd_8ns_8ns_16ns_16_4_1_U14 mac_muladd_8ns_8ns_16ns_16_4_1_U23 mul_8ns_8ns_16_1_1_U6 mac_muladd_8ns_8ns_16ns_16_4_1_U24 mac_muladd_8ns_8ns_16ns_16_4_1_U15 mac_muladd_8ns_8ns_16ns_16_4_1_U15 mac_muladd_8ns_8ns_16ns_16_4_1_U24 mul_8ns_8ns_16_1_1_U7 mac_muladd_8ns_8ns_16ns_16_4_1_U25 mac_muladd_8ns_8ns_16ns_16_4_1_U16 mac_muladd_8ns_8ns_16ns_16_4_1_U16 mac_muladd_8ns_8ns_16ns_16_4_1_U25 mul_8ns_8ns_16_1_1_U8 mac_muladd_8ns_8ns_16ns_16_4_1_U26 mac_muladd_8ns_8ns_16ns_16_4_1_U17 mac_muladd_8ns_8ns_16ns_16_4_1_U17 mac_muladd_8ns_8ns_16ns_16_4_1_U26 mul_8ns_8ns_16_1_1_U9 mac_muladd_8ns_8ns_16ns_16_4_1_U27 mac_muladd_8ns_8ns_16ns_16_4_1_U18 mac_muladd_8ns_8ns_16ns_16_4_1_U18 mac_muladd_8ns_8ns_16ns_16_4_1_U27</BindInstances>
         </TopModule>
     </RTLDesignHierarchy>
     <ModuleInformation>
-        <Module>
-            <Name>matrix_mult_3x3_Pipeline_coluna_loop</Name>
-            <Loops>
-                <coluna_loop/>
-            </Loops>
-            <PerformanceEstimates>
-                <SummaryOfTimingAnalysis>
-                    <TargetClockPeriod>10.00</TargetClockPeriod>
-                    <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>2.771</EstimatedClockPeriod>
-                </SummaryOfTimingAnalysis>
-                <SummaryOfOverallLatency>
-                    <Best-caseLatency>8</Best-caseLatency>
-                    <Average-caseLatency>8</Average-caseLatency>
-                    <Worst-caseLatency>8</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>80.000 ns</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>80.000 ns</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>80.000 ns</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>8</PipelineInitiationInterval>
-                    <PipelineType>no</PipelineType>
-                </SummaryOfOverallLatency>
-                <SummaryOfLoopLatency>
-                    <coluna_loop>
-                        <Name>coluna_loop</Name>
-                        <Slack>7.30</Slack>
-                        <TripCount>3</TripCount>
-                        <Latency>6</Latency>
-                        <AbsoluteTimeLatency>60.000 ns</AbsoluteTimeLatency>
-                        <PipelineII>1</PipelineII>
-                        <PipelineDepth>5</PipelineDepth>
-                        <PipelineType>yes</PipelineType>
-                        <InstanceList/>
-                    </coluna_loop>
-                </SummaryOfLoopLatency>
-            </PerformanceEstimates>
-            <AreaEstimates>
-                <Resources>
-                    <DSP>2</DSP>
-                    <AVAIL_DSP>1200</AVAIL_DSP>
-                    <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>93</FF>
-                    <AVAIL_FF>282000</AVAIL_FF>
-                    <UTIL_FF>~0</UTIL_FF>
-                    <LUT>169</LUT>
-                    <AVAIL_LUT>141000</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
-                    <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>600</AVAIL_BRAM>
-                    <UTIL_BRAM>0</UTIL_BRAM>
-                    <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
-                    <UTIL_URAM>0</UTIL_URAM>
-                </Resources>
-            </AreaEstimates>
-            <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="add_ln34_fu_177_p2" SOURCE="multMatriz.c:34" URAM="0" VARIABLE="add_ln34"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U4" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U6" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_1"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U5" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_2"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U5" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U6" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_1"/>
-            </BindNodes>
-        </Module>
-        <Module>
-            <Name>matrix_mult_3x3_Pipeline_coluna_loop1</Name>
-            <Loops>
-                <coluna_loop/>
-            </Loops>
-            <PerformanceEstimates>
-                <SummaryOfTimingAnalysis>
-                    <TargetClockPeriod>10.00</TargetClockPeriod>
-                    <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>2.771</EstimatedClockPeriod>
-                </SummaryOfTimingAnalysis>
-                <SummaryOfOverallLatency>
-                    <Best-caseLatency>8</Best-caseLatency>
-                    <Average-caseLatency>8</Average-caseLatency>
-                    <Worst-caseLatency>8</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>80.000 ns</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>80.000 ns</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>80.000 ns</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>8</PipelineInitiationInterval>
-                    <PipelineType>no</PipelineType>
-                </SummaryOfOverallLatency>
-                <SummaryOfLoopLatency>
-                    <coluna_loop>
-                        <Name>coluna_loop</Name>
-                        <Slack>7.30</Slack>
-                        <TripCount>3</TripCount>
-                        <Latency>6</Latency>
-                        <AbsoluteTimeLatency>60.000 ns</AbsoluteTimeLatency>
-                        <PipelineII>1</PipelineII>
-                        <PipelineDepth>5</PipelineDepth>
-                        <PipelineType>yes</PipelineType>
-                        <InstanceList/>
-                    </coluna_loop>
-                </SummaryOfLoopLatency>
-            </PerformanceEstimates>
-            <AreaEstimates>
-                <Resources>
-                    <DSP>2</DSP>
-                    <AVAIL_DSP>1200</AVAIL_DSP>
-                    <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>93</FF>
-                    <AVAIL_FF>282000</AVAIL_FF>
-                    <UTIL_FF>~0</UTIL_FF>
-                    <LUT>179</LUT>
-                    <AVAIL_LUT>141000</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
-                    <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>600</AVAIL_BRAM>
-                    <UTIL_BRAM>0</UTIL_BRAM>
-                    <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
-                    <UTIL_URAM>0</UTIL_URAM>
-                </Resources>
-            </AreaEstimates>
-            <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="add_ln34_fu_179_p2" SOURCE="multMatriz.c:34" URAM="0" VARIABLE="add_ln34"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="add_ln43_fu_238_p2" SOURCE="multMatriz.c:43" URAM="0" VARIABLE="add_ln43"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U26" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U28" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_3"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U27" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_4"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U27" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U28" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_2"/>
-            </BindNodes>
-        </Module>
-        <Module>
-            <Name>matrix_mult_3x3_Pipeline_coluna_loop2</Name>
-            <Loops>
-                <coluna_loop/>
-            </Loops>
-            <PerformanceEstimates>
-                <SummaryOfTimingAnalysis>
-                    <TargetClockPeriod>10.00</TargetClockPeriod>
-                    <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>2.771</EstimatedClockPeriod>
-                </SummaryOfTimingAnalysis>
-                <SummaryOfOverallLatency>
-                    <Best-caseLatency>8</Best-caseLatency>
-                    <Average-caseLatency>8</Average-caseLatency>
-                    <Worst-caseLatency>8</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>80.000 ns</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>80.000 ns</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>80.000 ns</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>8</PipelineInitiationInterval>
-                    <PipelineType>no</PipelineType>
-                </SummaryOfOverallLatency>
-                <SummaryOfLoopLatency>
-                    <coluna_loop>
-                        <Name>coluna_loop</Name>
-                        <Slack>7.30</Slack>
-                        <TripCount>3</TripCount>
-                        <Latency>6</Latency>
-                        <AbsoluteTimeLatency>60.000 ns</AbsoluteTimeLatency>
-                        <PipelineII>1</PipelineII>
-                        <PipelineDepth>5</PipelineDepth>
-                        <PipelineType>yes</PipelineType>
-                        <InstanceList/>
-                    </coluna_loop>
-                </SummaryOfLoopLatency>
-            </PerformanceEstimates>
-            <AreaEstimates>
-                <Resources>
-                    <DSP>2</DSP>
-                    <AVAIL_DSP>1200</AVAIL_DSP>
-                    <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>93</FF>
-                    <AVAIL_FF>282000</AVAIL_FF>
-                    <UTIL_FF>~0</UTIL_FF>
-                    <LUT>181</LUT>
-                    <AVAIL_LUT>141000</AVAIL_LUT>
-                    <UTIL_LUT>~0</UTIL_LUT>
-                    <BRAM_18K>0</BRAM_18K>
-                    <AVAIL_BRAM>600</AVAIL_BRAM>
-                    <UTIL_BRAM>0</UTIL_BRAM>
-                    <URAM>0</URAM>
-                    <AVAIL_URAM>0</AVAIL_URAM>
-                    <UTIL_URAM>0</UTIL_URAM>
-                </Resources>
-            </AreaEstimates>
-            <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="add_ln34_fu_179_p2" SOURCE="multMatriz.c:34" URAM="0" VARIABLE="add_ln34"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="add_ln43_fu_238_p2" SOURCE="multMatriz.c:43" URAM="0" VARIABLE="add_ln43"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U45" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U47" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_1"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U46" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_2"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U46" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="coluna_loop" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U47" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_1"/>
-            </BindNodes>
-        </Module>
         <Module>
             <Name>matrix_mult_3x3</Name>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>10.00</TargetClockPeriod>
                     <ClockUncertainty>2.70</ClockUncertainty>
-                    <EstimatedClockPeriod>2.771</EstimatedClockPeriod>
+                    <EstimatedClockPeriod>2.295</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>29</Best-caseLatency>
-                    <Average-caseLatency>29</Average-caseLatency>
-                    <Worst-caseLatency>29</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>0.290 us</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>0.290 us</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>0.290 us</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>30</PipelineInitiationInterval>
+                    <Best-caseLatency>8</Best-caseLatency>
+                    <Average-caseLatency>8</Average-caseLatency>
+                    <Worst-caseLatency>8</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>80.000 ns</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>80.000 ns</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>80.000 ns</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>9</PipelineInitiationInterval>
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
-                    <DSP>6</DSP>
+                    <DSP>18</DSP>
                     <AVAIL_DSP>1200</AVAIL_DSP>
-                    <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>288</FF>
+                    <UTIL_DSP>1</UTIL_DSP>
+                    <FF>121</FF>
                     <AVAIL_FF>282000</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>646</LUT>
+                    <LUT>528</LUT>
                     <AVAIL_LUT>141000</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <BRAM_18K>0</BRAM_18K>
@@ -635,6 +470,53 @@
                     <UTIL_URAM>0</UTIL_URAM>
                 </Resources>
             </AreaEstimates>
+            <BindNodes>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U1" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U19" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U10" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U10" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U19" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U2" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_2"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U20" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_3"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U11" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_4"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U11" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_2"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U20" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_3"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U3" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_4"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U21" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U12" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_7"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U12" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_4"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U21" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_5"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U4" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U22" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_9"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U13" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U13" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_6"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U22" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_7"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U5" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_8"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U23" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_12"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U14" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_13"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U14" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_8"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U23" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_9"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U6" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U24" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_15"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U15" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_16"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U15" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U24" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_11"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U7" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_12"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U25" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_18"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U16" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_19"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U16" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_12"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U25" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_13"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U8" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_14"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U26" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_21"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U17" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_22"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U17" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_14"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U26" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_15"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="0" ID="" IMPL="auto" LATENCY="0" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mul_8ns_8ns_16_1_1_U9" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_16"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U27" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_24"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U18" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="mul_ln40_25"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U18" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="add_ln40_16"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp48" LATENCY="3" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_8ns_16ns_16_4_1_U27" SOURCE="multMatriz.c:40" URAM="0" VARIABLE="soma_17"/>
+            </BindNodes>
         </Module>
     </ModuleInformation>
     <FIFOInformation/>
@@ -672,6 +554,10 @@
                 <hwRef type="port" interface="R_ce0" name="R_ce0" usage="control" direction="out"/>
                 <hwRef type="port" interface="R_we0" name="R_we0" usage="control" direction="out"/>
                 <hwRef type="port" interface="R_d0" name="R_d0" usage="data" direction="out"/>
+                <hwRef type="port" interface="R_address1" name="R_address1" usage="address" direction="out"/>
+                <hwRef type="port" interface="R_ce1" name="R_ce1" usage="control" direction="out"/>
+                <hwRef type="port" interface="R_we1" name="R_we1" usage="control" direction="out"/>
+                <hwRef type="port" interface="R_d1" name="R_d1" usage="data" direction="out"/>
             </hwRefs>
         </Arg>
     </Args>
@@ -932,6 +818,28 @@
                 <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="R"/>
             </constraints>
         </Interface>
+        <Interface InterfaceName="R_address1" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="4">
+            <portMaps>
+                <portMap portMapName="R_address1">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>R_address1</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="R"/>
+            </constraints>
+        </Interface>
+        <Interface InterfaceName="R_d1" type="data" busTypeName="data" protocol="ap_memory" mode="master" dataWidth="16">
+            <portMaps>
+                <portMap portMapName="R_d1">DATA</portMap>
+            </portMaps>
+            <ports>
+                <port>R_d1</port>
+            </ports>
+            <constraints>
+                <constraint constraint_type="pragma interface" mode="ap_memory" register_option="0" argName="R"/>
+            </constraints>
+        </Interface>
     </Interfaces>
     <ReportHWInterface>
         <section name="HW Interfaces" level="0">
@@ -939,7 +847,9 @@
                 <table isCollapsed="0">
                     <keys size="2">Interface, Bitwidth</keys>
                     <column name="R_address0">4, , </column>
+                    <column name="R_address1">4, , </column>
                     <column name="R_d0">16, , </column>
+                    <column name="R_d1">16, , </column>
                 </table>
             </item>
             <item name="Other Ports">
@@ -1010,6 +920,10 @@
                     <column name="R">R_ce0, port, , </column>
                     <column name="R">R_we0, port, , </column>
                     <column name="R">R_d0, port, , </column>
+                    <column name="R">R_address1, port, offset, </column>
+                    <column name="R">R_ce1, port, , </column>
+                    <column name="R">R_we1, port, , </column>
+                    <column name="R">R_d1, port, , </column>
                 </table>
             </item>
         </section>
@@ -1017,7 +931,7 @@
     <PragmaReport>
         <Pragma type="array_partition" location="trabalho2SD/solution_array_partition/directives.tcl:7" status="valid" parentFunction="matrix_mult_3x3" variable="A" isDirective="1" options="complete dim=0 variable=A"/>
         <Pragma type="array_partition" location="trabalho2SD/solution_array_partition/directives.tcl:9" status="valid" parentFunction="matrix_mult_3x3" variable="B" isDirective="1" options="complete dim=0 variable=B"/>
-        <Pragma type="unroll" location="trabalho2SD/solution_array_partition/directives.tcl:8" status="valid" parentFunction="matrix_mult_3x3" variable="" isDirective="1" options=""/>
+        <Pragma type="unroll" location="trabalho2SD/solution_array_partition/directives.tcl:11" status="valid" parentFunction="matrix_mult_3x3" variable="" isDirective="1" options=""/>
     </PragmaReport>
 </profile>
 

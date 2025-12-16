@@ -4,8 +4,8 @@
     <file name="multMatriz.c" sc="0" tb="false" cflags="" blackbox="false" csimflags=""/>
   </files>
   <solutions>
-    <solution name="solucao" status="active"/>
-    <solution name="solution_Pipeline" status="inactive"/>
+    <solution name="solucao" status="inactive"/>
+    <solution name="solution_Pipeline" status="active"/>
     <solution name="solution_array_partition" status="inactive"/>
   </solutions>
   <includePaths/>

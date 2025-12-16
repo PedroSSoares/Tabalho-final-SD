@@ -175,4 +175,90 @@ INFO: [HLS 200-42] -- Implementing module 'matrix_mult_3x3'
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]
+INFO: [HLS 200-111]==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.2 (64-bit)
+Tool Version Limit: 2019.12
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xcau25p-sfvb784-2-i'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xcau25p-sfvb784-2-i 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: source ./trabalho2SD/solution_array_partition/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name matrix_mult_3x3 matrix_mult_3x3 
+INFO: [HLS 200-1510] Running: set_directive_array_partition -type complete -dim 0 matrix_mult_3x3 A 
+INFO: [HLS 200-1510] Running: set_directive_unroll matrix_mult_3x3/linha_loop 
+INFO: [HLS 200-1510] Running: set_directive_array_partition -type complete -dim 0 matrix_mult_3x3 B 
+INFO: [HLS 200-1510] Running: set_directive_unroll matrix_mult_3x3/coluna_loop 
+INFO: [HLS 200-1510] Running: set_directive_unroll matrix_mult_3x3/produto_loop 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 10.03 seconds; current allocated memory: 213.809 MB.
+INFO: [HLS 200-10] Analyzing design file 'multMatriz.c' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.29 seconds. CPU system time: 0.34 seconds. Elapsed time: 0.87 seconds; current allocated memory: 213.809 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-186] Unrolling loop 'linha_loop' (multMatriz.c:32:17) in function 'matrix_mult_3x3' completely with a factor of 3 (multMatriz.c:11:0)
+INFO: [HLS 214-186] Unrolling loop 'coluna_loop' (multMatriz.c:34:22) in function 'matrix_mult_3x3' completely with a factor of 3 (multMatriz.c:11:0)
+INFO: [HLS 214-186] Unrolling loop 'produto_loop' (multMatriz.c:38:27) in function 'matrix_mult_3x3' completely with a factor of 3 (multMatriz.c:11:0)
+INFO: [HLS 214-248] Applying array_partition to 'A': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (multMatriz.c:11:0)
+INFO: [HLS 214-248] Applying array_partition to 'B': Complete partitioning on dimension 1. Complete partitioning on dimension 2. (multMatriz.c:11:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 3.6 seconds. CPU system time: 0.35 seconds. Elapsed time: 4.17 seconds; current allocated memory: 215.188 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 215.188 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 215.684 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.02 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.03 seconds; current allocated memory: 215.734 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 236.586 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.03 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 236.586 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'matrix_mult_3x3' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'matrix_mult_3x3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_24) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_22) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_18) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_15) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_16) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_12) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_13) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_9) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_10) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_6) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_7) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_4) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=mul_ln40_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.13 seconds; current allocated memory: 236.586 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.07 seconds. CPU system time: 0 seconds. Elapsed time: 0.08 seconds; current allocated memory: 236.586 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'matrix_mult_3x3' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_2_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/A_2_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_0_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_0_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_0_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_1_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_1_1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_1_2' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_2_0' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'matrix_mult_3x3/B_2_1' to 'ap_none'.

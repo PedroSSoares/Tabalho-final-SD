@@ -22,6 +22,12 @@
                 <option name="variable" positionalBoolean="4" value="B"/>
             </pragma>
         </directive>
+        <directive functionName="matrix_mult_3x3" label="coluna_loop" functionLabel="">
+            <pragma name="UNROLL"/>
+        </directive>
+        <directive functionName="matrix_mult_3x3" label="produto_loop" functionLabel="">
+            <pragma name="UNROLL"/>
+        </directive>
         <directive functionName="matrix_mult_3x3" label="" functionLabel="">
             <pragma name="TOP">
                 <option name="name" value="matrix_mult_3x3"/>
